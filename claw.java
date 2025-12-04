@@ -47,7 +47,7 @@ public class claw extends park {
     
     @Override
     public String rideOutcome() {
-        return "The Claw " + numOfLaps + " laps at a height of " + heightOffGround + " feet!";
+        return "You rode the Claw for" + numOfLaps + " laps at a height of " + heightOffGround + " feet!";
     }   
 
     @Override
