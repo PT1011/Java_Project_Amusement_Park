@@ -6,12 +6,14 @@
 * Date: 12 / 07 / 2025
 */ 
 
+// Creating claw class that extends from park class
 public class claw extends park {
+    // Defining variables
     private int heightOffGround;
     private int numOfLaps;
     private boolean musicOn;
     private boolean isUpsideDown;
-
+    // Creating constructor
     public claw(int maxRiders, String nameOfRide, double ticketCost, double rideDuration, int attendants, double utilityCostPerHour, double hoursPerDay, double speed, int heightOffGround, int numOfLaps, boolean musicOn, boolean isUpsideDown) {
         super(maxRiders, nameOfRide, ticketCost, rideDuration, attendants, utilityCostPerHour, hoursPerDay, speed);
         this.heightOffGround = heightOffGround;
@@ -19,7 +21,7 @@ public class claw extends park {
         this.musicOn = musicOn;
         this.isUpsideDown = isUpsideDown;
     }
-
+    // Creating all the getters and setters
     public int getHeightOffGround() {
         return heightOffGround;
     }
@@ -44,12 +46,12 @@ public class claw extends park {
     public void setUpsideDown(boolean isUpsideDown) {
         this.isUpsideDown = isUpsideDown;
     }
-    
+    // Creating ride outcome method
     @Override
     public String rideOutcome() {
         return "You rode the Claw for" + numOfLaps + " laps at a height of " + heightOffGround + " feet!";
     }   
-
+    // Creating puke factor method
     @Override
     public double calculatePukeFactor() {
 
@@ -67,7 +69,7 @@ public class claw extends park {
         if (isUpsideDown) {
             pukeFactor += 15.0;
         }
-
+        
         return pukeFactor;
     }
 

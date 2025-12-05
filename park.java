@@ -6,7 +6,9 @@
 */ 
 
 /**
- * Name: park.java
+ * Name: pa{
+    public static void 
+}rk.java
  * Purpose: Parent abstract class, setting up genera; variables and methods to be used in child classes
  */
 

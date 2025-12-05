@@ -1,16 +1,21 @@
 /**
- * Name: Parth Thite
+ * Name: Group Team Project 
+ * Programmer: Parth Thite
  * Date: 12/4/2025
- * Purpose: The carasoul is a ride that extends
+ * Purpose: The carousel is a ride that extends the park class and includes things such as number of laps and whether music is 
+ * on or not. I also included arrays for music genre and type of animals on the carousel.
  */
 
 public class carousel extends park {
 
+    // Fefining variables 
     private int numOfLaps;
+    public double pukeFactor = 0.0;
     private boolean musicOn;
     private String[] musicGenre = {"Pop", "Rock", "Classical", "Jazz", "Country"};
     private String[] typeOfAnimals = {"Horse", "Lion", "Tiger", "Bear", "Elephant"};
 
+    // Making constructor
     public carousel(int maxRiders, String nameOfRide, double ticketCost, double rideDuration, int attendants, double utilityCostPerHour, double hoursPerDay, double speed, boolean musicOn) {
         super(maxRiders, nameOfRide, ticketCost, rideDuration, attendants, utilityCostPerHour, hoursPerDay, speed);
         this.musicGenre = musicGenre;
@@ -19,12 +24,12 @@ public class carousel extends park {
         this.typeOfAnimals = typeOfAnimals;
     }
 
+    // Defining methods 
     @Override
     public double calculatePukeFactor() {
-        double pukeFactor = 0.0;
 
         // Base puke factor calculation based on speed and laps
-        pukeFactor += (speed) * numOfLaps;
+        pukeFactor += (getSpeed()) * numOfLaps;
 
         // Increase puke factor if music is on
         if (musicOn = true) {
@@ -36,8 +41,15 @@ public class carousel extends park {
 
     @Override
     public String rideOutcome() {
-        return "You rode the Teacups " + numOfLaps + " times and there were " + numOfCups + " cups!";
-    }
+        if (pukeFactor >= 20)  {
+            return "You rode the Carousel " + numOfLaps + " times. " + " You rode the " + typeOfAnimals + " and you piked! Yuck...";
+        }
+        
+        else {
+            return  "You rode the Carousel " + numOfLaps + " times. " + " You rode the " + typeOfAnimals;
+        }
+
+    }   
 
     public void setNumOfLaps() {
         this.numOfLaps = numOfLaps;

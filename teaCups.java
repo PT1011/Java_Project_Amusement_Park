@@ -1,3 +1,10 @@
+/**
+ * Programmer: Lucas Campbell
+ * Date: 12/4/2025
+ * Purpose: The teacup is a ride that extends the park class and includes things such as number of laps and whether 
+ * the cups are spinning.
+ */
+
 public class teaCups extends park {
     private int numOfCups;
     private int numOfLaps;
@@ -7,7 +14,7 @@ public class teaCups extends park {
         super(maxRiders, nameOfRide, ticketCost, rideDuration, attendants, utilityCostPerHour, hoursPerDay, speed);
         this.numOfCups = numOfCups;
         this.numOfLaps = numOfLaps;
-        this.numOfLaps = numOfLaps;
+        this.cupSpin = cupSpin;
     }
 
     public int numOfCups() {
@@ -22,7 +29,7 @@ public class teaCups extends park {
     public void setNumOfLaps(int numOfLaps) {
         this.numOfLaps = numOfLaps;
     }
-    public boolean getcupSpin() {
+    public boolean getCupSpin() {
         return cupSpin;
     }
     public void setCupSpin(boolean cupSpin) {
@@ -41,9 +48,9 @@ public class teaCups extends park {
         // Base puke factor calculation based on height and laps
         pukeFactor += (numOfCups) * numOfLaps;
 
-        // Increase puke factor if music is on
+        // Increase puke factor if spin is on
         if (cupSpin) {
-            pukeFactor *= 6.0;
+            pukeFactor *= 2.0;
         }
 
         return pukeFactor;

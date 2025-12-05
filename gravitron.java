@@ -1,6 +1,6 @@
 /*
 * Name: Group Team Project 
-* Purpose: Creating a gravitron class for the gravitron ride that extends from the park class
+* Purpose: Creating a Gravitron class for the Gravitron ride that extends from the park class
 * Programmer: Angel Carmichael
 * Date: 12 / 07 / 2025
 */ 
@@ -12,9 +12,8 @@ public class gravitron extends park {
     private boolean isStationary = true;
     private int numOfLaps = 5;
 
-    gravitron(){}
-
-    gravitron(double gravityPull, boolean isFlashingLights, boolean isStationary, int numOfLaps){
+    public gravitron(int maxRiders, String nameOfRide, double ticketCost, double rideDuration, int attendants, double utilityCostPerHour, double hoursPerDay, double speed, double gravityPull, boolean isFlashingLights, boolean isStationary, int numOfLaps){
+        super(maxRiders, nameOfRide, ticketCost, rideDuration, attendants, utilityCostPerHour, hoursPerDay, speed);
         gravityPull = this.gravityPull;
         isFlashingLights = this.isFlashingLights;
         isStationary = this.isStationary;
@@ -45,11 +44,11 @@ public class gravitron extends park {
         return this.isStationary;
     }
 
-    public void setnumOfLaps(int laps){
+    public void setNumOfLaps(int laps){
         numOfLaps = laps;
     }
 
-    public int getnumOfLaps(){
+    public int getNumOfLaps(){
         return this.numOfLaps;
     }
 
@@ -60,21 +59,21 @@ public class gravitron extends park {
 
     @Override
     public double calculatePukeFactor() {
-
+        // base puke factor
         double pukeFactor = 5.0;
 
-        // Increase puke factor if music is on
+        // Increase puke factor significantly if the ride moves
         if (!isStationary) {
-            pukeFactor += 25.0;
+            pukeFactor += 15.0;
         }
 
-        // Increase puke factor significantly if the ride goes upside down
+        // Increase puke factor significantly if the rides lights flash
         if (isFlashingLights) {
             pukeFactor += 15.0;
         }
-
+        // Increase puke factor significantly if the ride iss both moves and the lights flash
         if (isFlashingLights && !isStationary) {
-            pukeFactor += 15.0;
+            pukeFactor += 25.0;
         }
 
         return pukeFactor;
