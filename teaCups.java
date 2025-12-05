@@ -37,20 +37,26 @@ public class teaCups extends park {
     }
     
     @Override
-    public String rideOutcome() {
-        return "You rode the Teacups " + numOfLaps + " times and there were " + numOfCups + " cups!";
-    }   
+    public String rideOutcome(int ridesTaken) {
+        return "You rode the Teacups " + ridesTaken + " times and there were " + numOfCups + " cups!";
+    }
+ 
 
     @Override
+    // Calculates puke factor based on cups, laps, speed, and spin
     public double calculatePukeFactor() {
         double pukeFactor = 0.0;
 
-        // Base puke factor calculation based on height and laps
-        pukeFactor += (numOfCups) * numOfLaps;
+        pukeFactor += numOfCups * 0.5;
+        pukeFactor += numOfLaps * 1.2;
+        pukeFactor += getSpeed() * 0.3;
 
-        // Increase puke factor if spin is on
         if (cupSpin) {
-            pukeFactor *= 2.0;
+            pukeFactor *= 1.5;
+        }
+
+        if (pukeFactor > 25) {
+            pukeFactor = 25;
         }
 
         return pukeFactor;

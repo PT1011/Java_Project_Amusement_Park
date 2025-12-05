@@ -101,7 +101,7 @@ public abstract class park {
     //  Methods to calculate daily revenue, cost, and profit
 
     public double calculateDailyRevenue(){
-        double ridesPerHour = hoursPerDay / rideDuration;
+        double ridesPerHour = hoursPerDay / (rideDuration / 60.0); // convert minutes to hours
         double totalRidersPerDay = ridesPerHour * maxRiders;
         return totalRidersPerDay * ticketCost;
     }
@@ -120,6 +120,6 @@ public abstract class park {
     
     public abstract double calculatePukeFactor();
     
-    public abstract String rideOutcome();
+    public abstract String rideOutcome(int ridesTaken);
 }
 

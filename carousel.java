@@ -8,7 +8,8 @@
 
 public class carousel extends park {
 
-    // Fefining variables 
+    // Defining variables
+    private String chosenAnimal;  
     private int numOfLaps;
     public double pukeFactor = 0.0;
     private boolean musicOn;
@@ -16,15 +17,17 @@ public class carousel extends park {
     private String[] typeOfAnimals = {"Horse", "Lion", "Tiger", "Bear", "Elephant"};
 
     // Making constructor
-    public carousel(int maxRiders, String nameOfRide, double ticketCost, double rideDuration, int attendants, double utilityCostPerHour, double hoursPerDay, double speed, boolean musicOn) {
-        super(maxRiders, nameOfRide, ticketCost, rideDuration, attendants, utilityCostPerHour, hoursPerDay, speed);
-        this.musicGenre = musicGenre;
-        this.numOfLaps = numOfLaps;
-        this.musicOn = musicOn;
-        this.typeOfAnimals = typeOfAnimals;
-    }
+    public carousel(int maxRiders, String nameOfRide, double ticketCost, double rideDuration, int attendants, 
+    double utilityCostPerHour, double hoursPerDay, double speed, boolean musicOn, int numOfLaps) {
+    super(maxRiders, nameOfRide, ticketCost, rideDuration, attendants, utilityCostPerHour, hoursPerDay, speed);
 
-    // Defining methods 
+    this.musicOn = musicOn;
+    this.numOfLaps = numOfLaps;
+    this.chosenAnimal = "Horse"; // default if user never picks
+}
+
+
+    // Creating methods 
     @Override
     public double calculatePukeFactor() {
 
@@ -39,18 +42,34 @@ public class carousel extends park {
         return pukeFactor;
     }
 
+    // Ride outcome method 
     @Override
-    public String rideOutcome() {
-        if (pukeFactor >= 20)  {
-            return "You rode the Carousel " + numOfLaps + " times. " + " You rode the " + typeOfAnimals + " and you piked! Yuck...";
-        }
-        
-        else {
-            return  "You rode the Carousel " + numOfLaps + " times. " + " You rode the " + typeOfAnimals;
+    public String rideOutcome(int ridesTaken) {
+        String outcome;
+
+        if (pukeFactor >= 20) {
+            outcome = "You did " + numOfLaps + " laps on the Carousel. "
+                + "You rode the " + chosenAnimal + " and you puked! Yikes...\n";
+        } else {
+            outcome = "You did " + numOfLaps + " laps on the Carousel. "
+                + "You rode the " + chosenAnimal + "!\n";
         }
 
-    }   
+        // ADD ASCII ART
+        outcome += getAsciiArt();
 
+        return outcome;
+    }
+
+    // Getters and Setters
+    public void setChosenAnimal(String animal) {
+        this.chosenAnimal = animal;
+    }
+
+    public String getChosenAnimal() {
+        return chosenAnimal;
+    }
+   
     public void setNumOfLaps() {
         this.numOfLaps = numOfLaps;
     }
@@ -58,6 +77,96 @@ public class carousel extends park {
     public int getNumOfLaps() {
         return numOfLaps;
     }
+
+    // Method to return ASCII art based on chosen animal
+    private String getAsciiArt() {
+    switch (chosenAnimal.toLowerCase()) {
+
+        case "horse":
+        return "             ______/``'``'-.\n" +
+               "           (_   6  \\    .^\n" +
+               "         __ `'.__,  |    `'-.\n" +
+               "        /_ \\  /    /      :`^'\n" +
+               "      /`/_` \\/    /       .'\n" +
+               "      \"/  `'-     |.-'`^. `.\n" +
+               "      / .`-._     \\   `'^^^\n" +
+               "    /`/'    \\      \\\n" +
+               "    \"\"       \\      `.\n" +
+               "              `\\      `.\n" +
+               "                `\\/     \\-'-.-\n" +
+               "                 /     /`.  `-.\n" +
+               "                (    /'   )  .^\n" +
+               "                 \\  \\\\  .'^. `.\n" +
+               "                  \\ > >  `` `. )\n" +
+               "                  // /       .`\n" +
+               "                /`/\n" +
+               "                \"\"\n";
+
+
+        case "lion":
+        return "    \\|\\||\n" +
+               "  -' ||||/\n" +
+               " /7   |||||/\n" +
+               "/    |||||||/`-.____________\n" +
+               "\\-' |||||||||               `-._\n" +
+               " -|||||||||||               |` -`.\n" +
+               "   ||||||               \\   |   `\\\\\n" +
+               "    |||||\\  \\______...---\\_  \\    \\\\\n" +
+               "       |  \\  \\           | \\  |    ``-.__--.\n" +
+               "       |  |\\  \\         / / | |       ``---'\n" +
+               "     _/  /_/  /      __/ / _| |\n" +
+               "    (,__/(,__/      (,__/ (,__/\n";
+
+
+        case "tiger":
+        return "                          __,,,,_\n" +
+            "          _ __..-;''`--/'/ /.',-`-.\n" +
+            "      (`/' ` |  \\ \\ \\\\ / / / / .-'/`,_\n" +
+            "     /'`\\ \\   |  \\ | \\| // // / -.,/_,'-,\n" +
+            "    /<7' ;  \\ \\  | ; ||/ /| | \\/    |`-/,/-.,_,/')\n" +
+            "   /  _.-, `,-\\,__|  _-| / \\ \\/|_/  |    '-/.;.\\'\n" +
+            "   `-`  f/ ;      / __/ \\__ `/ |__/ |\n" +
+            "        `-'      |  -| =|\\_  \\  |-' |\n" +
+            "              __/   /_..-' `  ),'  //\n" +
+            "            ((__.-'((___..-'' \\__.'\n";
+
+        case "bear":
+        return "     (()__(()\n" +
+            "        /       \\\n" +
+            "       ( /    \\  \\\n" +
+            "        \\ o o    /\n" +
+            "        (_()_)__/ \\\n" +
+            "       / _,==.____ \\\n" +
+            "      (   |--|      )\n" +
+            "      /\\_.|__|'-.__/\\_\n" +
+            "     / (        /     \\\n" +
+            "     \\  \\      (      /\n" +
+            "      )  '._____)    /\n" +
+            "   (((____.--(((____/mrf\n";
+
+        case "elephant":
+        return "      __\n" +
+               "    '. \\\n" +
+               "     '- \\\n" +
+               "      / /_         .---.\n" +
+               "     / | \\\\,./--.//    )\n" +
+               "     |  \\\\//        )/  /\n" +
+               "      \\\\  ' ^ ^    /    )____.----..  6\n" +
+               "       '.____.    .___/            \\._)\n" +
+               "          .\\/ .                      )\n" +
+               "           '\\\\                       /\n" +
+               "           _/ \\\\/    ).        )    (\n" +
+               "          /#  .!    |        /\\\\    /\n" +
+               "          \\\\  C// #  /'-----''/ #  /\n" +
+               "       .   'C/ |    |    |   |    |mrf  ,\n" +
+               "       \\), .. .'OOO-'. ..'OOO'OOO-'. ..\\),( \n";
+
+
+        default:
+            return "(no ASCII available)";
+    }
+}
+
 
 
 

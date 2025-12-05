@@ -13,6 +13,7 @@ public class claw extends park {
     private int numOfLaps;
     private boolean musicOn;
     private boolean isUpsideDown;
+    public double pukeFactor = 0.0;
     // Creating constructor
     public claw(int maxRiders, String nameOfRide, double ticketCost, double rideDuration, int attendants, double utilityCostPerHour, double hoursPerDay, double speed, int heightOffGround, int numOfLaps, boolean musicOn, boolean isUpsideDown) {
         super(maxRiders, nameOfRide, ticketCost, rideDuration, attendants, utilityCostPerHour, hoursPerDay, speed);
@@ -48,9 +49,24 @@ public class claw extends park {
     }
     // Creating ride outcome method
     @Override
-    public String rideOutcome() {
-        return "You rode the Claw for" + numOfLaps + " laps at a height of " + heightOffGround + " feet!";
-    }   
+    public String rideOutcome(int ridesTaken) {
+    String outcome;
+
+    if (pukeFactor >= 20) {
+        outcome = "You swung on The Claw for " + numOfLaps + " cycles. "
+                + "The ride tossed you around and… you puked! Yikes...\n";
+    } else {
+        outcome = "You swung on The Claw for " + numOfLaps + " cycles. "
+                + "You survived the chaos!\n";
+    }
+
+    // Add Claw ASCII art
+    //outcome += getAsciiArt();
+
+    return outcome;
+    }
+
+   
     // Creating puke factor method
     @Override
     public double calculatePukeFactor() {
