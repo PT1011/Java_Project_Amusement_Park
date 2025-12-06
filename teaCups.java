@@ -9,14 +9,14 @@ public class teaCups extends park {
     private int numOfCups;
     private int numOfLaps;
     private boolean cupSpin;
-
+ 
     public teaCups(int maxRiders, String nameOfRide, double ticketCost, double rideDuration, int attendants, double utilityCostPerHour, double hoursPerDay, double speed, int numOfCups, int numOfLaps, boolean cupSpin) {
         super(maxRiders, nameOfRide, ticketCost, rideDuration, attendants, utilityCostPerHour, hoursPerDay, speed);
         this.numOfCups = numOfCups;
         this.numOfLaps = numOfLaps;
         this.cupSpin = cupSpin;
     }
-
+ 
     public int numOfCups() {
         return numOfCups;
     }
@@ -33,35 +33,78 @@ public class teaCups extends park {
         return cupSpin;
     }
     public void setCupSpin(boolean cupSpin) {
-        this.cupSpin = cupSpin; 
+        this.cupSpin = cupSpin;
     }
     
     @Override
     public String rideOutcome(int ridesTaken) {
-        return "You rode the Teacups " + ridesTaken + " times and there were " + numOfCups + " cups!";
+        String outcome;
+        double pukeFactor = calculatePukeFactor();
+ 
+        if (pukeFactor >= 20) {
+            outcome = "You rode the Teacups " + ridesTaken + " times and there were " + numOfCups
+                + " cups!\nYou spun around and… you puked! \n";
+        } else {
+            outcome = "You rode the Teacups " + ridesTaken + " times and there were " + numOfCups
+                + " cups!\nYou survived the spinning ride! \n";
+        }
+ 
+    // Add ASCII art for Teacups
+    outcome += getAsciiArt();
+ 
+    return outcome;
     }
  
-
+    private String getAsciiArt() {
+    return
+          "                                     %.                                   \n" +
+          "                                    %                                     \n" +
+          "                                   *=#                                    \n" +
+          "                                   %.#                                    \n" +
+          "                                  #. .%                                  \n" +
+          "                                .#%    #.                                \n" +
+          "                                 %=%   %                                 \n" +
+          "                                  %%%%%                                  \n" +
+          "                                  .%%%.                                  \n" +
+          "                                  #%%%#                                  \n" +
+          "                                  %%%%%                                  \n" +
+          "                                  %###%                                  \n" +
+          "                                  %##%%                                  \n" +
+          "      ##################.        .=%#%=:        .##################  .   \n" +
+          "=%   #%................ +        % +#+ #        +  ..   ...   ....%%   %= \n" +
+          "#.    %%%%%%%%%%%%%%%%%%+       .#+ # *#        +%%%%%%%%%%%%%%%%%%.    # \n" +
+          "#     % .##...##  .##*  +       %.%.#.%.%.      +  *%#   ##. .##  %.    # \n" +
+          ".#.   % # .#.#..%.%..%.:-      =+.#.#.#.+=      -:.%..%.# .#.%. #.%.  .# \n" +
+          " .%%  %=.  . . .   .. .#.    .#..%..#..% .#.     %  ..           =%  %%. \n" +
+          "   .. .*#%%%%%%%%%%%%##.    %#  %*  #  *% .##.   .%%%%%%%%%%%%%%#*.  .   \n" +
+          "         %%%%%%%%%%%#. ..#%.   #    #   .#..  %%. . #%%%%%%%%%%%.        \n" +
+          "      .%#.......#%.......=##.......%%%.......#%-.......%%.......##.      \n" +
+          "      .# #% #.#   .# -  #   .#.%.#%   %#.%.%.  .#. -.%.  .%.# %# %.      \n" +
+          "      .#.. %#.      .##.     ..%%       %%........%%   ....:%%   #.      \n";
+ 
+}
+ 
+ 
     @Override
     // Calculates puke factor based on cups, laps, speed, and spin
     public double calculatePukeFactor() {
         double pukeFactor = 0.0;
-
+ 
         pukeFactor += numOfCups * 0.5;
         pukeFactor += numOfLaps * 1.2;
         pukeFactor += getSpeed() * 0.3;
-
+ 
         if (cupSpin) {
             pukeFactor *= 1.5;
         }
-
+ 
         if (pukeFactor > 25) {
             pukeFactor = 25;
         }
-
+ 
         return pukeFactor;
     }
-
+ 
 }
 
 
