@@ -50,19 +50,13 @@ public class claw extends park {
     // Creating ride outcome method
     @Override
     public String rideOutcome(int ridesTaken) {
-    String outcome;
-    // If else statement to determine ride outcome based on puke factor
-    if (pukeFactor >= 20) {
-        outcome = "You swung on The Claw for " + numOfLaps + " cycles. "
-                + "The ride tossed you around and… you puked! Yikes...\n";
-    } else {
-        outcome = "You swung on The Claw for " + numOfLaps + " cycles. "
-                + "You survived the chaos!\n";
-    }
-    // Adding ASCII art to the outcome
-    outcome += getAsciiArt();
-    
-    return outcome;
+        // Build outcome string using ridesTaken 
+        String outcome = "You swung on The Claw for " + ridesTaken + " cycles.\n";
+
+        // Add ASCII art
+        outcome += getAsciiArt();
+
+        return outcome;
     }
  
     // Creating ride art method

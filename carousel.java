@@ -28,15 +28,12 @@ public class carousel extends park {
 
 
     // Creating methods 
-    @Override
+   @Override
     public double calculatePukeFactor() {
+        double pukeFactor = (getSpeed() * numOfLaps) / 10.0; // divide to reduce impact
 
-        // Base puke factor calculation based on speed and laps
-        pukeFactor += (getSpeed()) * numOfLaps;
-
-        // Increase puke factor if music is on
-        if (musicOn = true) {
-            pukeFactor *= 1.5;
+        if (musicOn) {
+            pukeFactor *= 1.2; // smaller multiplier
         }
 
         return pukeFactor;
@@ -45,17 +42,11 @@ public class carousel extends park {
     // Ride outcome method 
     @Override
     public String rideOutcome(int ridesTaken) {
-        String outcome;
+        // Build outcome string using ridesTaken and chosenAnimal 
+        String outcome = "You did " + ridesTaken + " laps on the Carousel. "
+                    + "You rode the " + chosenAnimal + "!\n";
 
-        if (pukeFactor >= 20) {
-            outcome = "You did " + numOfLaps + " laps on the Carousel. "
-                + "You rode the " + chosenAnimal + " and you puked! Yikes...\n";
-        } else {
-            outcome = "You did " + numOfLaps + " laps on the Carousel. "
-                + "You rode the " + chosenAnimal + "!\n";
-        }
-
-        // ADD ASCII ART
+        // Add ASCII art
         outcome += getAsciiArt();
 
         return outcome;

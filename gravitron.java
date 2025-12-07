@@ -56,21 +56,14 @@ public class gravitron extends park {
  
    @Override
     public String rideOutcome(int ridesTaken) {
-        String outcome;
- 
-        if (pukeFactor >= 20) {
-            outcome = "You did " + numOfLaps + " spins on the Gravitron. "
-                + "You held on tight and… you puked! Yikes...\n";
-        } else {
-            outcome = "You did " + numOfLaps + " spins on the Gravitron. "
-                + "You held on tight and survived!\n";
-        }
- 
-    // Add Gravitron ASCII art
+    // Build outcome string using ridesTaken 
+    String outcome = "You did " + ridesTaken + " spins on the Gravitron.\n";
+
+    // Add ASCII art
     outcome += getAsciiArt();
- 
+
     return outcome;
-}
+    }
  
  
     private String getAsciiArt() {

@@ -16,7 +16,7 @@ public class teaCups extends park {
         this.numOfLaps = numOfLaps;
         this.cupSpin = cupSpin;
     }
- 
+    //setters and getters
     public int numOfCups() {
         return numOfCups;
     }
@@ -35,24 +35,15 @@ public class teaCups extends park {
     public void setCupSpin(boolean cupSpin) {
         this.cupSpin = cupSpin;
     }
-    
-    @Override
+    // The summary of the outcome and prints the asci art
+   @Override
     public String rideOutcome(int ridesTaken) {
-        String outcome;
-        double pukeFactor = calculatePukeFactor();
- 
-        if (pukeFactor >= 20) {
-            outcome = "You rode the Teacups " + ridesTaken + " times and there were " + numOfCups
-                + " cups!\nYou spun around and… you puked! \n";
-        } else {
-            outcome = "You rode the Teacups " + ridesTaken + " times and there were " + numOfCups
-                + " cups!\nYou survived the spinning ride! \n";
-        }
- 
-    // Add ASCII art for Teacups
-    outcome += getAsciiArt();
- 
-    return outcome;
+        String outcome = 
+            "You rode the Teacups " + ridesTaken +
+            " times and there were " + numOfCups + " cups!\n";
+
+        outcome += getAsciiArt();
+        return outcome;
     }
  
     private String getAsciiArt() {
@@ -96,10 +87,6 @@ public class teaCups extends park {
  
         if (cupSpin) {
             pukeFactor *= 1.5;
-        }
- 
-        if (pukeFactor > 25) {
-            pukeFactor = 25;
         }
  
         return pukeFactor;
