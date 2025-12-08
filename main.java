@@ -5,6 +5,14 @@
 * Date: 12 / 5 / 2025
 */ 
 
+// “Our group has only used resources indicated below that are allowable. The work
+// submitted is our group’s, and only our group’s, work.”
+// -	Parth Thite 12/2/2025
+// -	Lucas Campbell 12/2/2025
+// -	Sham Nemer 12/2/2025
+// -	Angel Carmicheal 12/2/2025
+
+
 import java.util.Scanner;
 import java.util.ArrayList;
 
